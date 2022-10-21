@@ -1,0 +1,12 @@
+E:\projects\CrunchEditor\JFLogging\bin\Debug\net6.0\JFLogging.deps.json
+E:\projects\CrunchEditor\JFLogging\bin\Debug\net6.0\JFLogging.dll
+E:\projects\CrunchEditor\JFLogging\bin\Debug\net6.0\JFLogging.pdb
+E:\projects\CrunchEditor\JFLogging\obj\Debug\net6.0\JFLogging.csproj.AssemblyReference.cache
+E:\projects\CrunchEditor\JFLogging\obj\Debug\net6.0\JFLogging.GeneratedMSBuildEditorConfig.editorconfig
+E:\projects\CrunchEditor\JFLogging\obj\Debug\net6.0\JFLogging.AssemblyInfoInputs.cache
+E:\projects\CrunchEditor\JFLogging\obj\Debug\net6.0\JFLogging.AssemblyInfo.cs
+E:\projects\CrunchEditor\JFLogging\obj\Debug\net6.0\JFLogging.csproj.CoreCompileInputs.cache
+E:\projects\CrunchEditor\JFLogging\obj\Debug\net6.0\JFLogging.dll
+E:\projects\CrunchEditor\JFLogging\obj\Debug\net6.0\refint\JFLogging.dll
+E:\projects\CrunchEditor\JFLogging\obj\Debug\net6.0\JFLogging.pdb
+E:\projects\CrunchEditor\JFLogging\obj\Debug\net6.0\ref\JFLogging.dll
