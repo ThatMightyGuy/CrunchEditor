@@ -1,0 +1,12 @@
+{
+    "config.cfg":
+    {
+        "type": true,
+        "contents": null
+    },
+    "extensions":
+    {
+        "type": false,
+        "contents": null
+    }
+}
