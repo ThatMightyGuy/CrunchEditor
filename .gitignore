@@ -1,0 +1,7 @@
+# No need for that...
+.vscode
+# Don't commit binaries
+*/bin
+*/obj
+# Don't commit logs
+Avalonia*
