@@ -1,7 +1,8 @@
 using Avalonia.Controls;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-namespace CrunchEditor.CrunchCore
+using CrunchEditor.Extensions;
+namespace CrunchEditor.Core
 {
     public partial class MainWindow : Window
     {

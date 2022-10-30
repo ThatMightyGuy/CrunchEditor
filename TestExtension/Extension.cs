@@ -1,4 +1,4 @@
-﻿using CrunchEditor.CrunchCommon.Extensions;
+﻿using CrunchEditor.Extensions;
 namespace JetFly.TestExtension
 {
     public class Extension

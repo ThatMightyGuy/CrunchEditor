@@ -2,9 +2,9 @@
 using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using CrunchEditor.CrunchCommon.Extensions;
+using CrunchEditor.Extensions;
 
-namespace CrunchEditor.CrunchCore;
+namespace CrunchEditor.Core;
 
 public class CrunchFrontend
 {

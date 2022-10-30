@@ -1,8 +1,8 @@
 using System.Runtime.InteropServices;
 using JetFly.Logging;
-using CrunchEditor.CrunchCommon.Extensions;
+using CrunchEditor.Extensions;
 
-namespace CrunchEditor.CrunchBackend;
+namespace CrunchEditor.Backend;
 
 
 public class CrunchLayer

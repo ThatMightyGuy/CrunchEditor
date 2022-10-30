@@ -1,5 +1,5 @@
 using JetFly.Logging;
-namespace CrunchEditor.CrunchCommon.Extensions;
+namespace CrunchEditor.Extensions;
 
 public static class ExtensionApi
 {

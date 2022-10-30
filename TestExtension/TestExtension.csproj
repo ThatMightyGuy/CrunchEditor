@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\CrunchBackend\CrunchBackend.csproj" />
-    <ProjectReference Include="..\CrunchCommon\CrunchCommon.csproj" />
+    <ProjectReference Include="..\CrunchCore\CrunchCore.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

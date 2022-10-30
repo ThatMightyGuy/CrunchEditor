@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace CrunchEditor.CrunchBackend;
+namespace CrunchEditor.Backend;
 public sealed class Config
 {
     public static Config? StaticConfig;

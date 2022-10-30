@@ -1,9 +1,9 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 using JetFly.Logging;
-using CrunchEditor.CrunchCommon;
+using CrunchEditor;
 
-namespace CrunchEditor.CrunchCommon.Extensions;
+namespace CrunchEditor.Extensions;
 
 public interface IBasicExtension
 {

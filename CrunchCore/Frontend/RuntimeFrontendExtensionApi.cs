@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 using System.Threading.Tasks;
-namespace CrunchEditor.CrunchCore;
+namespace CrunchEditor.Core;
 public class ExtensionApi
 {
     public static Window? MainWindow;
