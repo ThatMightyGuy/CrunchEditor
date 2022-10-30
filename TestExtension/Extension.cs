@@ -1,17 +1,32 @@
 ﻿using CrunchEditor.Extensions;
+using JetFly.Logging;
 namespace JetFly.TestExtension
 {
     public class Extension
     {
-        public Extension() {}
-        public void PreInit() => Console.WriteLine("pre init");
-        public void Init() => Console.WriteLine("init");
-        public void PostInit() => Console.WriteLine("post init");
+        private readonly LoggerInstanceAsync logger;
+        public Extension(LoggerInstanceAsync logger)
+        {
+            this.logger = logger;
+        }
+        public void PreInit()
+        {
+            Task log = logger.Log("PRE INIT");
+        }
+        public void Init()
+        {
+            Task log = logger.Log("INIT");
+        }
+        public void PostInit()
+        {
+            Task log = logger.Log("POST INIT");
+        }
     }
 }
 public class CrunchExtensionDefinition : IInitiatableExtension, IBasicExtension
 {
     private readonly JetFly.TestExtension.Extension ext;
+    private readonly LoggerInstanceAsync log;
     private static readonly Dictionary<string, string> properties = new()
     {
         {"name", "TestExtension"},
@@ -21,7 +36,8 @@ public class CrunchExtensionDefinition : IInitiatableExtension, IBasicExtension
     };
     public CrunchExtensionDefinition()
     {
-        ext = new JetFly.TestExtension.Extension();
+        log = ExtensionApi.GetLoggerInstance(this);
+        ext = new JetFly.TestExtension.Extension(log);
     }
     public string GetMetadata(string name)
     {

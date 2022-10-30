@@ -11,7 +11,6 @@ namespace CrunchEditor.Core
             if(CrunchFrontend.PostInitEvent is not null)
             {
                 Task postInitTask = Task.Run(CrunchFrontend.PostInitEvent);
-                ExtensionApi extensionApi = new(this);
                 InitializeComponent();
             }
         }

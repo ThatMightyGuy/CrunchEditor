@@ -4,19 +4,21 @@ using CrunchEditor.Extensions;
 
 namespace CrunchEditor.Backend;
 
-
 public class CrunchLayer
 {
     private readonly LoggerAsync logger;
     private readonly HashSet<string> loggerInstances;
     private readonly LoggerInstanceAsync log;
+    public List<IBasicExtension>? Extensions;
+    private static Config? cfg;
     public static CrunchLayer? MainClass;
 
-    private CrunchLayer(LoggerAsync logger)
+    private CrunchLayer(LoggerAsync logger, string userFiles, string[] args)
     {
         this.logger = logger;
         this.loggerInstances = new();
         this.log = new(this.logger, "main");
+        
     }
     public async Task<FileStream> Open(string path)
     {
@@ -32,30 +34,34 @@ public class CrunchLayer
     }
     public static async Task Main(string[] args)
     {
-        // Get a canonical CrunchEditor userdata dir path
         string userFiles = Path.GetFullPath(
             Environment.ExpandEnvironmentVariables(
                 RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ?
                 "%UserProfile%/Documents/CrunchEditor/" :
-                "~/.cruncheditor/"
+                "$USER_HOME/.cruncheditor/"
             )
         );
+        MainClass = new(
+            new(
+                Console.Out, Console.Error,
+                File.CreateText(userFiles + "latest.log")
+            ),
+            userFiles, args
+        );
+
+        // Get a canonical CrunchEditor userdata dir path
+        
         if(!File.Exists(userFiles + "CrunchEditor.json"))
         {
             Directory.CreateDirectory(userFiles);
             File.WriteAllText(userFiles + "CrunchEditor.json", "{}");
         }
-        Config cfg = new(userFiles + "CrunchEditor.json");
-        MainClass = new(
-            new(
-                Console.Out, Console.Error,
-                File.CreateText(userFiles + "latest.log")
-            )
-        );
+        cfg = new(userFiles + "CrunchEditor.json");
         await MainClass.log.Log("User data folder: " + userFiles);
         ExtensionLoader extLoader = new(MainClass.GetLoggerInstance("extldr"));
         ExtensionApi.Init(MainClass);
-        Task extensionsLoading = extLoader.LoadExtensionsInDir(userFiles + "Extensions/");
+        Task<List<IBasicExtension>> extensionsLoading = extLoader.LoadExtensionsInDir(userFiles + "Extensions/");
+        MainClass.Extensions = await extensionsLoading.WaitAsync(TimeSpan.FromMilliseconds(-1));
         Task preInit = extensionsLoading.ContinueWith(
             (_) => extLoader.RaiseInitStageEvent(InitStage.PREINIT)
         );
@@ -70,5 +76,11 @@ public class CrunchLayer
             return new(logger, source);
         else
             throw new InstanceExistsException("A logger for this source already exists");
+    }
+    public static string GetConfigProperty(string key) => cfg is null ? "Empty config" : cfg.GetProperty<string>(key);
+    public IBasicExtension? GetExtensionById(string id)
+    {
+        if(MainClass is null || MainClass.Extensions is null) return null;
+        return MainClass.Extensions.Find(ext => ext.GetMetadata("id") == id);
     }
 }
