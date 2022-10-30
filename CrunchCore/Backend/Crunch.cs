@@ -62,7 +62,7 @@ public class CrunchLayer
         await preInit;
         Action init = () => extLoader.RaiseInitStageEvent(InitStage.INIT);
         Action postInit = () => extLoader.RaiseInitStageEvent(InitStage.POSTINIT); 
-        CrunchCore.CrunchFrontend.Start(init, postInit, args);
+        Core.CrunchFrontend.Start(init, postInit, args);
     }
     public LoggerInstanceAsync GetLoggerInstance(string source)
     {
