@@ -7,19 +7,9 @@
         ExtendClientAreaToDecorationsHint="True"
         ExtendClientAreaChromeHints="NoChrome"
         ExtendClientAreaTitleBarHeightHint="-1"
-        Background="Transparent"
-        TransparencyLevelHint="AcrylicBlur"
         Title="Crunch">
 
         <Panel Width="{Binding Window.Width}" Height="{Binding Window.Height}">
-                <ExperimentalAcrylicBorder IsHitTestVisible="False">
-                        <ExperimentalAcrylicBorder.Material>
-                                <ExperimentalAcrylicMaterial
-                                        TintColor="#1F1E26"
-                                        TintOpacity="1.0"
-                                        MaterialOpacity="0.0" />
-                        </ExperimentalAcrylicBorder.Material>
-                </ExperimentalAcrylicBorder>
                 <DockPanel VerticalAlignment="Top" HorizontalAlignment="Stretch" IsHitTestVisible="False">
                         <Menu DockPanel.Dock="Top" >
                                 <MenuItem Header="_File">

@@ -1,14 +1,10 @@
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using JetFly.Logging;
-using CrunchEditor.CrunchBackend.Extensions;
+using CrunchEditor.CrunchCommon.Extensions;
 
 namespace CrunchEditor.CrunchBackend;
 
-public class BadInstallException : Exception
-{
-    public BadInstallException(string message) : base(message) {}
-}
+
 public class CrunchLayer
 {
     private readonly LoggerAsync logger;
@@ -58,13 +54,15 @@ public class CrunchLayer
         );
         await MainClass.log.Log("User data folder: " + userFiles);
         ExtensionLoader extLoader = new(MainClass.GetLoggerInstance("extldr"));
+        ExtensionApi.Init(MainClass);
         Task extensionsLoading = extLoader.LoadExtensionsInDir(userFiles + "Extensions/");
         Task preInit = extensionsLoading.ContinueWith(
             (_) => extLoader.RaiseInitStageEvent(InitStage.PREINIT)
         );
         await preInit;
-
-        CrunchCore.CrunchFrontend.Start(args);
+        Action init = () => extLoader.RaiseInitStageEvent(InitStage.INIT);
+        Action postInit = () => extLoader.RaiseInitStageEvent(InitStage.POSTINIT); 
+        CrunchCore.CrunchFrontend.Start(init, postInit, args);
     }
     public LoggerInstanceAsync GetLoggerInstance(string source)
     {

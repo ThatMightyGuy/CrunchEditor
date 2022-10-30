@@ -5,3 +5,5 @@
 */obj
 # Don't commit logs
 Avalonia*
+# Ignore what you wanna ignore
+*.ignore

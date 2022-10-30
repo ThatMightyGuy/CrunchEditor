@@ -1,8 +1,9 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 using JetFly.Logging;
+using CrunchEditor.CrunchCommon;
 
-namespace CrunchEditor.CrunchBackend.Extensions;
+namespace CrunchEditor.CrunchCommon.Extensions;
 
 public interface IBasicExtension
 {
@@ -58,8 +59,9 @@ public class ExtensionLoader
     {
         this.logger = logger;
     }
-    public async Task LoadExtensionsInDir(string path)
+    public async Task<List<IBasicExtension>> LoadExtensionsInDir(string path)
     {
+        List<IBasicExtension> extensions = new();
         string? dirName = Path.GetDirectoryName(path);
         if(dirName is null)
         {
@@ -72,12 +74,13 @@ public class ExtensionLoader
             string file = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "Extension.dll" : "Extension.so";
             file = Path.Combine(dir, file);
             if(File.Exists(file))
-                await Load(file);
+                extensions.Add(await Load(file));
             else
                 await logger.Log($"{dir} does not provide an Extension.(dll/so). Skipping...");
         }
+        return extensions;
     }
-    public async Task Load(string path)
+    public async Task<IBasicExtension> Load(string path)
     {
         (IInitiatableExtension?, IBasicExtension) ext = new();
         try
@@ -131,5 +134,6 @@ public class ExtensionLoader
             OnPostInit += GetEventHandler("PostInit");
         }
         await logger.Log($"{name} version {ver} was successfully loaded");
+        return ext.Item1 is null ? ext.Item2 : ext.Item1;
     }
 }
