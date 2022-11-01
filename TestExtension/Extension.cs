@@ -19,7 +19,11 @@ namespace JetFly.TestExtension
         }
         public void PostInit()
         {
-            Task log = logger.Log("POST INIT");
+            Task.Run(() => logger.Log("POST INIT"));
+            Avalonia.Controls.Window? mainWindow = null;
+            mainWindow = ExtensionApi.GetMainWindow();
+            if(mainWindow is null) return;
+                ExtensionApi.Call(() => mainWindow.Title = "Test Extension changed me!");
         }
     }
 }

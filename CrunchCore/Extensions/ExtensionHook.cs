@@ -1,7 +1,6 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 using JetFly.Logging;
-using CrunchEditor;
 
 namespace CrunchEditor.Extensions;
 

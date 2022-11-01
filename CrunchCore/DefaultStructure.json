@@ -1,12 +1,16 @@
 {
-    "config.cfg":
-    {
-        "type": true,
-        "contents": null
-    },
-    "extensions":
-    {
-        "type": false,
-        "contents": null
-    }
+    "Name": ".",
+    "Type": false,
+    "Files": [
+        {
+            "Name": "config.cfg",
+            "Type": true,
+            "FileContents": null
+        },
+        {
+            "Name": "Extensions",
+            "Type": false,
+            "Files": null
+        }
+    ]
 }

@@ -1,7 +1,6 @@
 using System.Runtime.InteropServices;
 using JetFly.Logging;
 using CrunchEditor.Extensions;
-
 namespace CrunchEditor.Backend;
 
 public class CrunchLayer
@@ -18,7 +17,6 @@ public class CrunchLayer
         this.logger = logger;
         this.loggerInstances = new();
         this.log = new(this.logger, "main");
-        
     }
     public async Task<FileStream> Open(string path)
     {
@@ -38,9 +36,11 @@ public class CrunchLayer
             Environment.ExpandEnvironmentVariables(
                 RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ?
                 "%UserProfile%/Documents/CrunchEditor/" :
-                "$USER_HOME/.cruncheditor/"
+                "%HOME%/.cruncheditor/"
             )
         );
+        FilesystemItem userDir = new(File.ReadAllText("DefaultStructure.json"));
+        userDir.Create(userFiles);
         MainClass = new(
             new(
                 Console.Out, Console.Error,
@@ -50,7 +50,6 @@ public class CrunchLayer
         );
 
         // Get a canonical CrunchEditor userdata dir path
-        
         if(!File.Exists(userFiles + "CrunchEditor.json"))
         {
             Directory.CreateDirectory(userFiles);
