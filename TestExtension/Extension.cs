@@ -22,8 +22,10 @@ namespace JetFly.TestExtension
             Task.Run(() => logger.Log("POST INIT"));
             Avalonia.Controls.Window? mainWindow = null;
             mainWindow = ExtensionApi.GetMainWindow();
+            Avalonia.Media.LinearGradientBrush brush = new();
+            brush.Transitions.Add(new Avalonia.Animation.ColorTransition());
             if(mainWindow is null) return;
-                ExtensionApi.Call(() => mainWindow.Title = "Test Extension changed me!");
+                ExtensionApi.Call(() => mainWindow.Background = brush);
         }
     }
 }

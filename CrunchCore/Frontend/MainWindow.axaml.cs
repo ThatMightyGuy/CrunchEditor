@@ -1,6 +1,4 @@
 using Avalonia.Controls;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 using CrunchEditor.Extensions;
 namespace CrunchEditor.Core
 {
@@ -9,7 +7,6 @@ namespace CrunchEditor.Core
         public MainWindow()
         {
             ExtensionApi.MainWindow = this;
-            //this.Title = "Didn't change :c";
             if(CrunchFrontend.PostInitEvent is not null)
             {
                 Task initializeComponent = Task.Run(() => InitializeComponent());

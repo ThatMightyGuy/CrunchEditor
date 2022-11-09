@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 namespace CrunchEditor;
 
-public struct FilesystemItem
+internal struct FilesystemItem
 {
     public string Name;
     public bool Type;

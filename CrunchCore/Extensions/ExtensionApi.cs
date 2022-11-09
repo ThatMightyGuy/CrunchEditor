@@ -36,4 +36,8 @@ public static class ExtensionApi
     {
         return Dispatcher.UIThread.InvokeAsync(action, DispatcherPriority.Background);
     }
+    // public static Button? TryCreateDockButton(string icon, Action action)
+    // {
+        
+    // }
 }
