@@ -10,14 +10,18 @@
         Title="Crunch">
 
         <Panel Width="{Binding Window.Width}" Height="{Binding Window.Height}">
-                <DockPanel VerticalAlignment="Top" HorizontalAlignment="Stretch" IsHitTestVisible="False">
-                        <Menu DockPanel.Dock="Top" >
-                                <MenuItem Header="_File">
-                                        <MenuItem Header="_Open..."/>
-                                        <Separator/>
-                                        <MenuItem Header="_Exit"/>
-                                </MenuItem>
+                <!-- <DockPanel VerticalAlignment="Top" HorizontalAlignment="Stretch" IsHitTestVisible="False">
+                        <Menu Name="MenuDockPanel" DockPanel.Dock="Top">
+                                
                         </Menu>
-                </DockPanel>
+                </DockPanel> -->
+                <ScrollViewer>
+                        <StackPanel Name="MenuBar" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="50" Spacing="5">
+                                <Rectangle Fill="Red" Height="44"/>
+                                <Rectangle Fill="Blue" Height="44"/>
+                                <Rectangle Fill="Green" Height="44"/>
+                                <Rectangle Fill="Orange" Height="44"/>
+                        </StackPanel>
+                </ScrollViewer>
         </Panel>
 </Window>
