@@ -3,7 +3,7 @@ using JetFly.Logging;
 using CrunchEditor.Extensions;
 namespace CrunchEditor.Backend;
 
-public class CrunchLayer
+internal class CrunchLayer
 {
     private readonly LoggerAsync logger;
     private readonly HashSet<string> loggerInstances;

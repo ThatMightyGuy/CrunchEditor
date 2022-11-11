@@ -9,18 +9,13 @@
         ExtendClientAreaTitleBarHeightHint="-1"
         Title="Crunch">
 
-        <Panel Width="{Binding Window.Width}" Height="{Binding Window.Height}">
-                <!-- <DockPanel VerticalAlignment="Top" HorizontalAlignment="Stretch" IsHitTestVisible="False">
-                        <Menu Name="MenuDockPanel" DockPanel.Dock="Top">
-                                
+        <Panel Width="{Binding Window.Width}" Height="{Binding Window.Height}" Background="Transparent">
+                <DockPanel VerticalAlignment="Top" HorizontalAlignment="Stretch" IsHitTestVisible="False">
+                        <Menu Name="menubar" DockPanel.Dock="Top">
                         </Menu>
-                </DockPanel> -->
+                </DockPanel>
                 <ScrollViewer>
-                        <StackPanel Name="MenuBar" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="50" Spacing="5">
-                                <Rectangle Fill="Red" Height="44"/>
-                                <Rectangle Fill="Blue" Height="44"/>
-                                <Rectangle Fill="Green" Height="44"/>
-                                <Rectangle Fill="Orange" Height="44"/>
+                        <StackPanel Name="sidebar" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="50" Spacing="5">
                         </StackPanel>
                 </ScrollViewer>
         </Panel>

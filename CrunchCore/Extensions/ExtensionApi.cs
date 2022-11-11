@@ -9,8 +9,8 @@ namespace CrunchEditor.Extensions;
 public static class ExtensionApi
 {
     private static CrunchLayer? mainClass;
-    internal static Window? MainWindow;
-    public static void Init(CrunchLayer mainClass)
+    internal static MainWindow? MainWindow;
+    internal static void Init(CrunchLayer mainClass)
     {
         ExtensionApi.mainClass = mainClass;
     }
@@ -31,7 +31,7 @@ public static class ExtensionApi
         else
             throw new KeyNotFoundException("No such property");
     }
-    public static Window? GetMainWindow() => MainWindow;
+    public static MainWindow? GetMainWindow() => MainWindow;
     public static Task Call(Action action)
     {
         return Dispatcher.UIThread.InvokeAsync(action, DispatcherPriority.Background);

@@ -7,10 +7,11 @@ namespace CrunchEditor.Core
         public MainWindow()
         {
             ExtensionApi.MainWindow = this;
+            InitializeComponent();
             if(CrunchFrontend.PostInitEvent is not null)
             {
-                Task initializeComponent = Task.Run(() => InitializeComponent());
-                Task postInitTask = Task.Run(CrunchFrontend.PostInitEvent);
+                this.Opened += (object? _, EventArgs _) => CrunchFrontend.PostInitEvent();
+                InitializeComponent();
             }
         }
     }
