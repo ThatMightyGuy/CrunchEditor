@@ -75,7 +75,7 @@ public class ExtensionLoader
             if(File.Exists(file))
                 extensions.Add(await Load(file));
             else
-                await logger.Log($"{dir} does not provide an Extension.(dll/so). Skipping...");
+                await logger.Log($"{dir} does not provide an Extension.(dll/so). Skipping...", ErrorLevel.WARN);
         }
         return extensions;
     }

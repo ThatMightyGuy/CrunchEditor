@@ -5,7 +5,7 @@ def colored(r, g, b, text):
     return f"\033[38;2;{r};{g};{b}m{text} \033[38;2;255;255;255m"
 
 status = os.system("dotnet build")
-if not status == 0:
+if status != 0:
     print("Build failed, exiting")
     exit(1)
 for file in os.listdir():

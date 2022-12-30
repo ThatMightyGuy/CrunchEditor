@@ -10,4 +10,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <Target Name="CopyDLLs" AfterTargets="Build">
+    <Message Text="Copy $(TargetDir)$(ProjectName).dll;$(TargetDir)$(ProjectName).pdb" Importance="High" />
+    <Message Text="To $(USERPROFILE)/Documents/$(SolutionName)/Extensions/$(ProjectName)" Importance="High" />
+    <Copy
+      SourceFiles="$(TargetDir)$(ProjectName).dll;$(TargetDir)$(ProjectName).pdb"
+      DestinationFolder="$(USERPROFILE)/Documents/$(SolutionName)/Extensions/$(ProjectName)" />
+  </Target>
+
 </Project>

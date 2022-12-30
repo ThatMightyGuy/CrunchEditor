@@ -27,4 +27,12 @@
     <ProjectReference Include="..\JFLogging\JFLogging.csproj" />
   </ItemGroup>
 
+  <!-- <Target Name="CopyDependencies" AfterTargets="Build">
+    <Message Text="Copying dependencies for $(ProjectName)" Importance="High" />
+    <Message Text="To $(USERPROFILE)/Documents/$(SolutionName)/Extensions/$(ProjectName)" Importance="High" />
+    <Copy
+      SourceFiles="$(TargetDir)$(ProjectName)"
+      DestinationFolder="$(USERPROFILE)/Documents/$(SolutionName)/Extensions/$(ProjectName)" />
+  </Target> -->
+
 </Project>
