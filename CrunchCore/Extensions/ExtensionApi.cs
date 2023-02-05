@@ -40,4 +40,12 @@ public static class ExtensionApi
     // {
         
     // }
+    // public static Button? TryCreateOrGetDockButton(string icon, Action action)
+    // {
+        
+    // }
+    // public static Button? TryGetDockButton()
+    // {
+        
+    // }
 }

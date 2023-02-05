@@ -30,3 +30,11 @@ public class SwitchButton : Avalonia.Controls.Primitives.ToggleButton
         base.Classes.Add("switch-button");
     }
 }
+
+public class Tab : Avalonia.Controls.RelativePanel
+{
+    public Tab() : base()
+    {
+        base.Classes.Add("tab-panel");
+    }
+}
