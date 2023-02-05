@@ -11,9 +11,11 @@ if status != 0:
 
 home = "HOME"
 path = ".cruncheditor"
+ext = "so"
 if os.name == "nt":
     home = "USERPROFILE"
     path = "Documents/CrunchEditor"
+    ext = "dll"
 home = os.getenv(home).replace("\\", "/")
 
 for file in os.listdir():
@@ -22,8 +24,8 @@ for file in os.listdir():
     paths = [os.path.abspath(f"./{file}/bin/Debug/net6.0/{file}.dll"), f"{home}/{path}/Extensions/{file}"]
     if os.path.exists(paths[0]):
         if not os.path.exists(paths[1]): os.mkdir(paths[1])
-        shutil.copyfile(paths[0], f"{paths[1]}/Extension.dll")
-        print(colored(104, 224, 13, f"{paths[0]} -> {paths[1]}/Extension.dll"))
+        shutil.copyfile(paths[0], f"{paths[1]}/Extension.{ext}")
+        print(colored(104, 224, 13, f"{paths[0]} -> {paths[1]}/Extension.{ext}"))
 
 if len(sys.argv) > 1 and sys.argv[1] == "run":
     os.chdir("CrunchCore")
